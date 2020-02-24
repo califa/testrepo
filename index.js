@@ -47,7 +47,7 @@ if (server.isConnected && !connected) {
 }
 
 function initiateConnection() {
-    setConnected(true)
+    setIsConnected(true)
     setProblemWithServer(false)
     // Add the sender/recepient relationship to Figma Upload
     server.emit('addSender', server.id, function(serverReceiver) {
