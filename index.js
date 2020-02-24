@@ -37,7 +37,7 @@ server.on('connect', () => {
 // Stop trying to reconnect after 3 attempts
 server.on('reconnect_attempt', connection_attempts => {
     if (connection_attempts > 3) {
-    setProblemWithServer(true)
+        setProblemWithServer(true)
     }
 })
   
@@ -52,7 +52,7 @@ function initiateConnection() {
     // Add the sender/recepient relationship to Figma Upload
     server.emit('addSender', server.id, function(serverReceiver) {
     if (serverReceiver) {
-        setServerConnected(true)
+        setServerIsConnected(true)
         setServerWasConnected(true)
     }
     })
