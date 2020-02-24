@@ -42,7 +42,7 @@ server.on('reconnect_attempt', connection_attempts => {
 })
   
 // Just incase the server connects before the component has mounted
-if (server.connected && !connected) {
+if (server.isConnected && !connected) {
     initiateConnection()
 }
 
