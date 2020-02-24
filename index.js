@@ -34,6 +34,13 @@ server.on('connect', () => {
     initiateConnection()
 });
 
+// Stop trying to reconnect after 3 attempts
+server.on('reconnect_attempt', connection_attempts => {
+    if (connection_attempts > 3) {
+    setProblemWithServer(true)
+    }
+})
+  
 // Just incase the server connects before the component has mounted
 if (server.connected && !connected) {
     initiateConnection()
