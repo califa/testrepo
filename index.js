@@ -58,15 +58,6 @@ function initiateConnection() {
     })
 }
 
-
-
-
-
-
-
-
-
-
     // If the Figma client disconnects, don't try to reconnect
     server.on('figmaDisconnected', function(figmaReceiver) {
       if (figmaReceiver === figmaserver) {
