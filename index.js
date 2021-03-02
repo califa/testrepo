@@ -33,32 +33,28 @@ asdfasdfasdf
 server.on('connect', () => {
     initiateConnection()
 });
-
+server.on('reconnect_attempt', connection_attempts => {
+    if (connection_attempts > 3) {
+        setProblemWithServer(true)
+    }
+})
+  
 // Just incase the server connects before the component has mounted
-if (server.connected && !connected) {
+if (server.isConnected && !connected) {
     initiateConnection()
 }
 
 function initiateConnection() {
-    setConnected(true)
+    setIsConnected(true)
     setProblemWithServer(false)
     // Add the sender/recepient relationship to Figma Upload
     server.emit('addSender', server.id, function(serverReceiver) {
     if (serverReceiver) {
-        setServerConnected(true)
+        setServerIsConnected(true)
         setServerWasConnected(true)
     }
     })
 }
-
-
-
-
-
-
-
-
-
 
     // If the Figma client disconnects, don't try to reconnect
     server.on('figmaDisconnected', function(figmaReceiver) {
