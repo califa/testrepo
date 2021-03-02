@@ -33,8 +33,6 @@ function App() {
 server.on('connect', () => {
     initiateConnection()
 });
-
-// Stop trying to reconnect after 3 attempts
 server.on('reconnect_attempt', connection_attempts => {
     if (connection_attempts > 3) {
         setProblemWithServer(true)
