@@ -21,3 +21,6 @@ export function initAssetRegisters (Vue: GlobalAPI) {
     }
   })
 }
+
+
+olololol
